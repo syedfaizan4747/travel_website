@@ -54,11 +54,38 @@ def setup_production_data(apps, schema_editor):
         },
     ]
 
-    for car_data in cars:
-        Car.objects.get_or_create(
-            name=car_data["name"],
-            defaults=car_data,
+
+    for driver_data in drivers:
+        Driver.objects.get_or_create(
+            name=driver_data["name"],
+            defaults=driver_data,
         )
+        Driver = apps.get_model("tours", "Driver")
+
+    drivers = [
+        {
+            "name": "Syed Nayaz",
+            "experience": "20",
+            "details": "Experienced and professional driver with good knowledge of local routes.",
+        },
+        {
+            "name": "Mohmmed Arbaz",
+            "experience": "13",
+            "details": "Experienced and professional driver with good knowledge of local routes.",
+        },
+        {
+            "name": "Syed yaseen",
+            "experience": "15",
+            "details": "Professional and experienced driver focused on safe, comfortable and reliable travel. Experienced in local and outstation journeys.",
+        },
+        {
+            "name": "Syed Kazim",
+            "experience": "15",
+            "details": "Professional and experienced driver focused on safe, comfortable and reliable travel. Experienced in local and outstation journeys.",
+        },
+    ]
+
+   
 
 
 def reverse_setup_production_data(apps, schema_editor):
