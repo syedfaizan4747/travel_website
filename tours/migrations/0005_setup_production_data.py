@@ -1,5 +1,6 @@
 import os
 from django.db import migrations
+from django.contrib.auth.hashers import make_password
 
 
 def setup_production_data(apps, schema_editor):
@@ -20,7 +21,7 @@ def setup_production_data(apps, schema_editor):
         )
 
         if created:
-            user.set_password(password)
+            user.password = make_password(password)
             user.is_staff = True
             user.is_superuser = True
             user.save()
