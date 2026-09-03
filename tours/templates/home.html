@@ -1,0 +1,363 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SHN Tours & Travels | Travel With Comfort </title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-main">SHN</div>
+
+        <div class="logo-text">
+            Tours & Travels
+            <span>Your Journey, Our Responsibility</span>
+        </div>
+    </div>
+
+    <button class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </button>
+
+    <nav id="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#cars">Cars</a>
+        <a href="#drivers">Drivers</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Explore The World With SHN Tours & Travels
+        </h1>
+
+        <p>
+            Comfortable journeys,
+            trusted drivers and reliable
+            travel services.
+        </p>
+
+        <a href="#services"
+           class="btn">
+
+            Explore Our Services
+
+        </a>
+
+        <a href="#contact" class="btn secondary-btn">
+            Contact Us
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services"
+         class="section">
+
+    <h2>Our Services</h2>
+
+    <p class="section-description">
+        We provide reliable and comfortable
+        transportation services for every journey.
+    </p>
+
+
+    <div class="service-container">
+
+
+        <div class="service-card">
+
+            <h3>Tour & Travel</h3>
+
+            <p>
+                Comfortable travel services
+                for individuals, families
+                and groups.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <h3>Airport Transfer</h3>
+
+            <p>
+                Convenient pickup and drop
+                services for your airport journeys.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <h3>Corporate Travel</h3>
+
+            <p>
+                Professional transportation
+                services for business travel.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <h3>Local Travel</h3>
+
+            <p>
+                Safe and comfortable vehicles
+                for your daily travel needs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section why-us">
+
+    <h2>Why Choose Us?</h2>
+
+    <p class="section-description">
+        We are committed to making every journey
+        safe, comfortable and reliable.
+    </p>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <h3>🚗 Comfortable Cars</h3>
+            <p>
+                Well-maintained vehicles for
+                comfortable and enjoyable journeys.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>👨‍✈️ Trusted Drivers</h3>
+            <p>
+                Experienced drivers focused on
+                your safety and comfort.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>💬 Easy Booking</h3>
+            <p>
+                Contact us easily through WhatsApp
+                for your travel requirements.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CARS ================= -->
+
+<section id="cars" class="section cars-section">
+
+    <h2>Our Cars</h2>
+
+    <p class="section-description">
+        Choose from our comfortable
+        and well-maintained vehicles.
+    </p>
+
+    <div class="cars-grid">
+
+        {% for car in cars %}
+
+        <div class="car-card">
+
+            {% if car.image %}
+                <img src="{{ car.image.url }}" alt="{{ car.name }}">
+            {% endif %}
+
+            <h3>{{ car.name }}</h3>
+
+            <p>
+                <strong>Seats:</strong> {{ car.seats }}
+            </p>
+
+            <p>
+                {{ car.details }}
+            </p>
+
+          <a href="https://wa.me/919538834477?text=Hello%2C%20I%20am%20interested%20in%20{{ car.name|urlencode }}"
+                class="car-whatsapp-btn"
+                target="_blank">
+                Contact for This Car
+            </a>
+        </div>
+
+        {% empty %}
+
+        <p>No cars available at the moment.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ================= DRIVERS ================= -->
+
+<section id="drivers"
+         class="section">
+
+    <h2>Our Drivers</h2>
+
+    <p class="section-description">
+        Experienced and professional drivers
+        dedicated to providing a safe journey.
+    </p>
+
+
+    <div class="drivers-grid">
+
+    {% for driver in drivers %}
+    <div class="driver-card">
+
+        <h3>{{ driver.name }}</h3>
+
+        <p>
+            <strong>Experience:</strong>
+            {{ driver.experience }}
+        </p>
+
+        <p>{{ driver.details }}</p>
+
+    </div>
+
+    {% empty %}
+        <p>No drivers available at the moment.</p>
+    {% endfor %}
+
+</div>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about"
+         class="about-section">
+
+    <div class="about-content">
+
+        <h2>About Us</h2>
+
+        <p>
+
+            We are a trusted Tours & Travels
+            service provider dedicated to making
+            every journey comfortable, safe and
+            enjoyable.
+
+        </p>
+
+        <p>
+
+            Our experienced drivers and
+            well-maintained vehicles help us
+            provide reliable transportation
+            services for our customers.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact"
+         class="contact-section">
+
+    <h2>Contact Us</h2>
+
+  <p>
+    📞 Phone:
+    <a href="tel:+919538834477">+91 9538834477</a>
+</p>
+
+<p>
+    📧 Email:
+    <a href="mailto:syednayazh55@gmail.com">
+        syednayazh55@gmail.com
+    </a>
+</p>
+
+<a href="https://wa.me/919538834477" class="whatsapp-btn" target="_blank">
+    Contact us on WhatsApp
+</a>
+
+<a href="tel:+919538834477" class="call-btn">
+    📞 Call Us Now
+</a>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <a href="#home" class="back-to-top">⬆ Back to Top</a>
+
+    <p>© 2026 SHN Tours & Travels. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("mobile-menu").classList.toggle("show");
+    }
+
+    document.querySelectorAll("#mobile-menu a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            document.getElementById("mobile-menu").classList.remove("show");
+        });
+    });
+</script>
+
+
+</body>
+
+</html>
